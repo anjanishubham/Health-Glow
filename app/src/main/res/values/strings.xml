@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">HealthAndGlow</string>
+    <string name="user_review_text">%s  User Reviews </string>
+    <string name="rupees_symbol_text">₹ %s</string>
+    <string name="view_all_volume">View \n All \n Volume</string>
+    <string name="volume">Volume</string>
+    <string name="label1"> * \n <u> 100% </u> \n <u>GENUINE</u> \n PRODUCTS \n *</string>
+    <string name="label2">Trusted since 1997,we sell only 100% genuine products.We source directly from the brands and their authorized distributors.</string>
+    <string name="delivery_des_line1"> Standard Delivery | 2-5 working days</string>
+    <string name="delivery_des_line2"> Express Delivery | 24 hours</string>
+    <string name="delivery_des_line3"> Click &amp; Collect | Order online,Collect from store</string>
+    <string name="ask_our_expert">Ask Our Expert</string>
+    <string name="have_a_question_about_this_product_post_it_here">Have a question about this Product? Post it here</string>
+    <string name="post_question">Post Question</string>
+
+    <string name="postQuestion">Q: %s </string>
+    <string name="postBy">By %1$s,  %2$s </string>
+    <string name="postAnswer">A: %s </string>
+
+    <string name="show_all_question"><u>Show All Question</u></string>
+    <string name="user_review_and_rating">user Review And Rating</string>
+    <string name="pair_with">Pair With</string>
+
+</resources>

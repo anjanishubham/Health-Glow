@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="review"
+            type="com.lovelycoding.healthandglow.model.databinding.RateAndReviewDataBinding" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_16dp"
+        >
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/ratting"
+            android:numStars="5"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:rating="@{review.rating}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReviewTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:text="@{review.reviewTitle}"
+            app:layout_constraintStart_toEndOf="@+id/ratting"
+            app:layout_constraintTop_toTopOf="@+id/ratting"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingLeft="@dimen/margin_16dp"
+            tools:text="5 review " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReviewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:paddingVertical="3dp"
+            android:text="@{review.reviewDescription}"
+            app:layout_constraintTop_toBottomOf="@+id/tvReviewTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="5 review " />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReviewPostedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|center"
+            android:text="@{@string/postBy(review.reviewPostBy,review.reviewPostDate)}"
+            app:layout_constraintTop_toBottomOf="@+id/tvReviewDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="5 review " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

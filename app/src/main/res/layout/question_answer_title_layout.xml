@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAskOurExpert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/margin_16dp"
+        android:text="@string/ask_our_expert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="18dp"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHaveAnyQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:text="@string/have_a_question_about_this_product_post_it_here"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAskOurExpert"
+        android:background="@color/colorLightGray"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:id="@+id/tvPostQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_border_line"
+        android:text="@string/post_question"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHaveAnyQuestion"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:textSize="16dp"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

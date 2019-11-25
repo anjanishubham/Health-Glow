@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="sku1"
+            type="com.lovelycoding.healthandglow.model.pojo.Sku1" />
+        <variable
+            name="sku2"
+            type="com.lovelycoding.healthandglow.model.pojo.Sku2" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/text_border_line"
+        android:layout_marginRight="@dimen/margin_16dp"
+
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSku1Image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toStartOf="@+id/btAdd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{sku1.skuImageUrl}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSkulName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:text="@{sku1.skuName}"
+            android:paddingLeft="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/ivSku1Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivSku1Image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSku1Price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Rs 500"
+            android:paddingLeft="8dp"
+            android:text="@{String.format(@string/rupees_symbol_text,Integer.toString(sku1.listPrice))}"
+            android:textColor="@color/colorRed"
+            app:layout_constraintEnd_toEndOf="@+id/ivSku1Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSkulName" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btAdd"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/margin_16dp"
+            android:src="@drawable/ic_add_gray_14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSku1Price"
+            app:layout_constraintEnd_toStartOf="@+id/ivSku2Image"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivSku1Image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSku2Image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btAdd"
+
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{sku2.skuImageUrl}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSku2Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:paddingLeft="@dimen/margin_16dp"
+            android:text="@{sku2.skuName}"
+            app:layout_constraintEnd_toEndOf="@+id/ivSku2Image"
+            app:layout_constraintStart_toEndOf="@+id/btAdd"
+            app:layout_constraintTop_toBottomOf="@+id/ivSku2Image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSku2Price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Rs 500"
+            android:paddingLeft="@dimen/margin_16dp"
+            android:text="@{String.format(@string/rupees_symbol_text,Integer.toString(sku2.listPrice))}"
+            android:textColor="@color/colorRed"
+            app:layout_constraintEnd_toEndOf="@+id/ivSku2Image"
+            app:layout_constraintStart_toEndOf="@+id/btAdd"
+            app:layout_constraintTop_toBottomOf="@+id/tvSku2Name" />
+
+        <View
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSku1Price"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:hint="Rs 500"
+            android:paddingLeft="8dp"
+            android:paddingBottom="6dp"
+            android:layout_marginRight="30dp"
+            android:text="@{String.format(@string/rupees_symbol_text,Integer.toString(sku1.listPrice+sku2.listPrice))}"
+            android:textColor="@color/colorRed"
+            app:layout_constraintEnd_toStartOf="@+id/materialButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSku2Price" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="Buy Combo"
+            android:textAllCaps="false"
+            android:textSize="10dp"
+            android:layout_marginRight="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTotalPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvSku2Price" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

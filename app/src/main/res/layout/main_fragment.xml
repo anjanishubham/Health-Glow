@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.lovelycoding.healthandglow.model.pojo.Data" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.MainFragment"
+            android:layout_marginBottom="?attr/actionBarSize"
+            >
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cvProductImage"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpItemImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivShardIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|end"
+                    android:padding="@dimen/margin_16dp"
+                    android:src="@drawable/ic_share_gray_24dp" />
+            </com.google.android.material.card.MaterialCardView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBrandName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="dkfjlkasdjlkdjaslfl"
+                android:text="@{data.brandName}"
+                android:textColor="@color/colorPrimary"
+                android:textColorLink="@color/colorPrimary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/cvProductImage"
+
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProductName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.skuName}"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvBrandName" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProductPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="Rs 500"
+                android:text="@{String.format(@string/rupees_symbol_text,Integer.toString(data.defaultPrice))}"
+                android:textColor="@color/colorRed"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductPrice" />
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rattingProduct"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:rating="@{data.skuAverageRating}"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProductReview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingVertical="@dimen/margin_16dp"
+                android:text="@{String.format(@string/user_review_text,data.skuReviewCount)}"
+                app:layout_constraintBottom_toBottomOf="@+id/rattingProduct"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@+id/rattingProduct"
+                app:layout_constraintTop_toTopOf="@+id/rattingProduct"
+                tools:text="5 review " />
+            <include
+                android:id="@+id/volumeLayout"
+                layout="@layout/product_volume_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProductReview" />
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/volumeLayout"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                app:tabPadding="@dimen/margin_16dp"
+                app:tabInlineLabel="false"
+                app:tabMaxWidth="0dp"
+                android:scrollbars="horizontal">
+
+            </com.google.android.material.tabs.TabLayout>
+            <com.lovelycoding.healthandglow.ui.main.viewpager.WrapContentViewPager
+                android:id="@+id/tabLayoutViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+
+                />
+
+
+
+            <View
+                android:id="@+id/lineBelowTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayoutViewPager"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingVertical="12dp" />
+            />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCleanBeauty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/lineBelowTabLayout"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                android:textSize="25dp"
+                android:textStyle="italic|bold"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:text="@{data.cleanBeauty.title}"
+                android:paddingVertical="@dimen/margin_16dp"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCleanBeautyDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvCleanBeauty"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                android:text="@{data.cleanBeauty.subTitle}"
+
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCleanBeauty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvCleanBeautyDescription"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd" />
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/rvCleanBeauty"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingVertical="12dp" />
+            <include
+                android:id="@+id/appDescription"
+                layout="@layout/app_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_16dp"
+                app:layout_constraintTop_toBottomOf="@+id/line5"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+            <View
+                android:id="@+id/line6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/appDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingVertical="16dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDeleveryTextLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:hint="Delivery Options"
+                android:text="@{data.deliveryTitle}"
+                android:textSize="@dimen/margin_16dp"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/line6"
+                android:paddingVertical="@dimen/margin_16dp"
+                />
+            <include
+                android:id="@+id/deliveryLayout"
+                layout="@layout/delevery_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvDeleveryTextLabel"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                />
+
+            <View
+                android:id="@+id/line7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/deliveryLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingVertical="12dp" />
+            <include
+                android:id="@+id/questionAnswerLayout"
+                layout="@layout/question_answer_title_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/line7"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvQuestionAnswer"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/questionAnswerLayout"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShowAllQuestion"
+                android:paddingTop="@dimen/margin_16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/rvQuestionAnswer"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                android:text="@string/show_all_question"
+                android:textColor="@color/colorSaffron"
+                />
+            <include
+                android:id="@+id/reviewLayout"
+                layout="@layout/review_layout_title_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvShowAllQuestion"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRateAndReview"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/reviewLayout"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPairWith"
+                android:paddingTop="@dimen/margin_16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/rvRateAndReview"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                android:text="@string/pair_with"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPair"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvPairWith"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvPair"
+                 />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tvProductPrice
+                ,appDescription,rvQuestionAnswer,tvProductPrice,cvProductImage,lineBelowTabLayout,view,line6,tabLayout,line1,tabLayoutViewPager,tvBrandName,rvRateAndReview,tvPairWith,line5,tvDeleveryTextLabel,deliveryLayout,tvProductReview,reviewLayout,tvShowAllQuestion,rattingProduct,questionAnswerLayout,tvCleanBeauty,rvCleanBeauty,volumeLayout,tvCleanBeautyDescription,rvPair,tvProductName,line7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>
+
+

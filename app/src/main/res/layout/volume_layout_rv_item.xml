@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="volume"
+            type="com.lovelycoding.healthandglow.model.pojo.VolumeItem" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvProductVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="500ml"
+        android:text="@{volume.volume}"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:background="@drawable/circular_text_view"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:visibility="gone"
+        android:id="@+id/tvSelectedProductItemVolume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="500ml"
+        android:textSize="10dp"
+        android:text="@{volume.volume}"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selceted_circle_text_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

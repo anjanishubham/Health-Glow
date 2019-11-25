@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="questAns"
+            type="com.lovelycoding.healthandglow.model.databinding.QuestionAnswerDataBinding" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_16dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{@string/postQuestion(questAns.question)}"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQuestionPostBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="By anjani kumar "
+            android:text="@{@string/postBy(questAns.questionAskedBy,questAns.questionPostedDate)}"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuestionPostBy"
+            android:text="@{@string/postAnswer(questAns.answer)}"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAnswerPostBy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="By anjani kumar "
+            android:text="@{@string/postBy(questAns.answeredBy,questAns.answerPostedDate)}"
+            android:textAlignment="textEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAnswer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+    <!--
+                        android:text="@{String.format(@string/questAns,questAns.question)}"
+            -->
